@@ -300,7 +300,7 @@ address {
 }
 
 .logo-img {
-    height: 48px;
+    height: 58px;
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
@@ -308,7 +308,7 @@ address {
 }
 
 .header.scrolled .logo-img {
-    height: 38px; /* Slightly shrink logo inside scrolled header */
+    height: 46px; /* Slightly shrink logo inside scrolled header */
 }
 
 .nav-download-btn {
@@ -430,7 +430,7 @@ address {
 }
 
 .logo-img-mobile {
-    height: 36px;
+    height: 48px;
     width: auto;
 }
 
