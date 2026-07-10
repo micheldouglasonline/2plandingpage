@@ -436,3 +436,63 @@ function saveLead(lead) {
         console.error("Failed to save lead:", e);
     }
 }
+
+// ==========================================================================
+// Scroll Effects: Parallax, Header & Active Nav Highlighting
+// ==========================================================================
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    
+    // 1. Header Transition on Scroll
+    const header = document.querySelector('.header');
+    if (header) {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+    
+    // 2. Hero Background Parallax Effect
+    const heroBg = document.querySelector('.hero');
+    if (heroBg) {
+        // Shift background position Y slower than scroll speed
+        heroBg.style.backgroundPositionY = `${scrolled * 0.45}px`;
+    }
+    
+    // 3. Active Section Highlighting in Navbar
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    
+    let currentSectionId = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+        
+        if (scrolled >= sectionTop && scrolled < sectionTop + sectionHeight) {
+            currentSectionId = section.getAttribute('id');
+        }
+    });
+    
+    if (currentSectionId) {
+        // Update desktop links
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSectionId}`) {
+                link.classList.add('active');
+            }
+        });
+        
+        // Update mobile links
+        mobileNavLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSectionId}`) {
+                link.classList.add('active');
+            }
+        });
+    }
+});
+
+

@@ -281,11 +281,22 @@ address {
     transition: var(--transition-normal);
 }
 
+.header.scrolled {
+    background-color: rgba(10, 10, 12, 0.97);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
 .header-container {
     height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: var(--transition-normal);
+}
+
+.header.scrolled .header-container {
+    height: 60px;
 }
 
 .logo-img {
@@ -293,7 +304,32 @@ address {
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    transition: var(--transition-normal);
 }
+
+.header.scrolled .logo-img {
+    height: 38px; /* Slightly shrink logo inside scrolled header */
+}
+
+.nav-download-btn {
+    border: 1.5px solid rgba(218, 22, 23, 0.6) !important;
+    border-radius: var(--border-radius-full);
+    padding: 0.3rem 0.9rem !important;
+    background-color: rgba(218, 22, 23, 0.1);
+    color: var(--text-light) !important;
+    margin-left: 0.5rem;
+}
+
+.nav-download-btn:hover {
+    background-color: var(--primary-red) !important;
+    border-color: var(--primary-red) !important;
+    box-shadow: 0 4px 10px rgba(218, 22, 23, 0.25);
+}
+
+.nav-download-btn::after {
+    display: none !important;
+}
+
 
 .nav {
     display: none;
